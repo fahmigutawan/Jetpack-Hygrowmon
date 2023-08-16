@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.hygrowmon.routes.Routes
+import com.example.hygrowmon.screen.onboarding.OnboardingScreen
+import com.example.hygrowmon.screen.splash.SplashScreen
 import okhttp3.Route
 
 @Composable
@@ -17,10 +19,14 @@ fun MainNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Dashboard.name
+        startDestination = Routes.Splash.name
     ) {
         composable(Routes.Splash.name){
+            SplashScreen(navController = navController)
+        }
 
+        composable(Routes.Onboarding.name){
+            OnboardingScreen(navController = navController)
         }
 
         composable(Routes.Dashboard.name){

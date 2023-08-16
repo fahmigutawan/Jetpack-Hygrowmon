@@ -1,6 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 apply plugin: 'com.android.application'
@@ -85,9 +86,17 @@ dependencies {
 
     //Navigation
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     //Jetpack ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
+
+    //Datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 }
 
 kapt {
