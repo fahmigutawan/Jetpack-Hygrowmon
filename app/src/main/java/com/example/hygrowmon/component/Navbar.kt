@@ -8,13 +8,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -31,7 +29,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.hygrowmon.R
 import com.example.hygrowmon.routes.Routes
-import com.example.hygrowmon.theming.Color
+import com.example.hygrowmon.theming.AppColor
 
 enum class NavbarItem(
     val route: String,
@@ -107,13 +105,13 @@ fun Navbar(
                         Icon(
                             painter = rememberAsyncImagePainter(model = it.logoId),
                             contentDescription = "",
-                            tint = if (currentRoute == it.route) Color.Green else Color.DarkGrey
+                            tint = if (currentRoute == it.route) AppColor.Green else AppColor.DarkGrey
                         )
                         Text(
                             text = it.word,
                             textAlign = TextAlign.Center,
                             fontSize = 10.sp,
-                            color = if (currentRoute == it.route) Color.Green else Color.DarkGrey
+                            color = if (currentRoute == it.route) AppColor.Green else AppColor.DarkGrey
                         )
                     }
                 }

@@ -15,7 +15,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.hygrowmon.R
 import com.example.hygrowmon.routes.Routes
-import com.example.hygrowmon.theming.Color
+import com.example.hygrowmon.theming.AppColor
 import com.example.hygrowmon.viewmodel.splash.SplashViewModel
 import kotlinx.coroutines.delay
 
@@ -51,7 +51,7 @@ fun SplashScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Green),
+            .background(AppColor.Green),
         contentAlignment = Alignment.Center
     ) {
         AsyncImage(

@@ -19,7 +19,7 @@ fun MainNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Splash.name
+        startDestination = Routes.Onboarding.name
     ) {
         composable(Routes.Splash.name){
             SplashScreen(navController = navController)

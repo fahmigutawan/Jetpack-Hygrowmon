@@ -2,7 +2,7 @@ package com.example.hygrowmon.theming
 
 import androidx.compose.ui.graphics.Color
 
-object Color {
+object AppColor {
     val Green = Color(0xff3B8056)
     val Orange = Color(0xffC39567)
     val White = Color(0xffffffff)
