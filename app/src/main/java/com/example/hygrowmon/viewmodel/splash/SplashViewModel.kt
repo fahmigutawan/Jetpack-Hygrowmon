@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hygrowmon.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,7 +19,7 @@ class SplashViewModel @Inject constructor(
         viewModelScope.launch {
             onChecked(
                 repository.isLogin(),
-                repository.getFirstTimeState().last()
+                repository.getFirstTimeState().first()
             )
         }
     }

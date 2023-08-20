@@ -28,22 +28,26 @@ fun SplashScreen(
     LaunchedEffect(key1 = true) {
         delay(2000)
         viewModel.precheckStatus { isLogin, isFirstTime ->
-            if (isLogin) {
-                if (isFirstTime) {
-                    navController.navigate(Routes.Onboarding.name) {
-                        popUpTo(navController.graph.id) {
-                            inclusive = true
-                        }
+            if (isFirstTime) {
+                navController.navigate(Routes.Onboarding.name) {
+                    popUpTo(navController.graph.id) {
+                        inclusive = true
                     }
-                } else {
+                }
+            } else {
+                if(isLogin){
                     navController.navigate(Routes.Dashboard.name) {
                         popUpTo(navController.graph.id) {
                             inclusive = true
                         }
                     }
+                }else{
+                    navController.navigate(Routes.Login.name) {
+                        popUpTo(navController.graph.id) {
+                            inclusive = true
+                        }
+                    }
                 }
-            } else {
-                //TODO Go to Auth screen
             }
         }
     }

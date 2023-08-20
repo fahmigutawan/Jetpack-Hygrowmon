@@ -7,5 +7,7 @@ enum class Routes {
     Lahanku,
     Belanja,
     Pesan,
-    Profil
+    Profil,
+    Login,
+    Register
 }

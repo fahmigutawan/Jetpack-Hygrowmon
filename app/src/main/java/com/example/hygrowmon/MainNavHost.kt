@@ -19,7 +19,7 @@ fun MainNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Onboarding.name
+        startDestination = Routes.Splash.name
     ) {
         composable(Routes.Splash.name){
             SplashScreen(navController = navController)
@@ -46,6 +46,14 @@ fun MainNavHost(
         }
 
         composable(Routes.Profil.name){
+
+        }
+
+        composable(Routes.Login.name){
+
+        }
+
+        composable(Routes.Register.name){
 
         }
     }
