@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.hygrowmon.routes.Routes
+import com.example.hygrowmon.screen.auth.LoginScreen
+import com.example.hygrowmon.screen.auth.RegisterScreen
 import com.example.hygrowmon.screen.onboarding.OnboardingScreen
 import com.example.hygrowmon.screen.splash.SplashScreen
 import okhttp3.Route
@@ -50,11 +52,11 @@ fun MainNavHost(
         }
 
         composable(Routes.Login.name){
-
+            LoginScreen(navController = navController)
         }
 
         composable(Routes.Register.name){
-
+            RegisterScreen(navController = navController)
         }
     }
 }

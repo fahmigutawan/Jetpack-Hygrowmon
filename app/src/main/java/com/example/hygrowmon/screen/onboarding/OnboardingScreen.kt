@@ -85,7 +85,9 @@ fun OnboardingScreen(
             }
 
             Column(
-                modifier = Modifier.height((scrHeight - topSectionHeight.value).dp),
+                modifier = Modifier
+                    .height((scrHeight - topSectionHeight.value).dp)
+                    .padding(32.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
@@ -95,8 +97,7 @@ fun OnboardingScreen(
                 ) {
                     AsyncImage(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(32.dp),
+                            .fillMaxWidth(),
                         contentScale = ContentScale.Fit,
                         model = OnboardingData.values()[it].logoId,
                         contentDescription = ""
