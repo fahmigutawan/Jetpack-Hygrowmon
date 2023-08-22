@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.hygrowmon.component.util.AppTextFieldColors
+import com.example.hygrowmon.routes.Routes
 import com.example.hygrowmon.theming.AppColor
 import com.example.hygrowmon.viewmodel.auth.RegisterViewModel
 
@@ -44,23 +45,24 @@ fun RegisterScreen(navController: NavController) {
             .background(AppColor.Green)
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 32.dp),
-        verticalArrangement = Arrangement.spacedBy(32.dp)
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Spacer(modifier = Modifier.height(16.dp))
-
         Column {
-            Text(
-                text = "Halo",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = AppColor.White
-            )
-            Text(
-                text = "Silahkan isi form di bawah untuk daftar",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = AppColor.White
-            )
+            Spacer(modifier = Modifier.height(64.dp))
+            Column {
+                Text(
+                    text = "Halo",
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = AppColor.White
+                )
+                Text(
+                    text = "Silahkan isi form di bawah untuk daftar",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = AppColor.White
+                )
+            }
         }
 
         Column {
@@ -131,29 +133,31 @@ fun RegisterScreen(navController: NavController) {
             )
         }
 
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = AppColor.Orange,
-                contentColor = AppColor.White
-            ),
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Text(text = "Daftar")
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Text(text = "Sudah memiliki akun?", color = AppColor.White, fontSize = 12.sp)
-            TextButton(onClick = { /*TODO*/ }) {
-                Text(text = "Masuk di sini", color = AppColor.Orange, fontSize = 12.sp)
+        Column {
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {/*TODO*/ },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = AppColor.Orange,
+                    contentColor = AppColor.White
+                ),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(text = "Daftar")
             }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(text = "Sudah memiliki akun?", color = AppColor.White, fontSize = 12.sp)
+                TextButton(onClick = {
+                    navController.navigate(Routes.Login.name)
+                }) {
+                    Text(text = "Masuk di sini", color = AppColor.Orange, fontSize = 12.sp)
+                }
+            }
+            Spacer(modifier = Modifier.height(64.dp))
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }
