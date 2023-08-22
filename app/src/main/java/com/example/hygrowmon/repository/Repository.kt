@@ -37,9 +37,34 @@ class Repository @Inject constructor(
         noHp: String,
         email: String,
         password: String,
+        confirmPassword:String,
         onSuccess: () -> Unit,
-        onFailed: (e: Exception) -> Unit
+        onFailed: (e: String) -> Unit
     ) {
+        if (!Patterns
+                .EMAIL_ADDRESS
+                .matcher(email)
+                .matches()
+        ) {
+            onFailed("Masukkan Email Yang Benar")
+            return
+        }
+
+        if(password != confirmPassword){
+            onFailed("Password dan Konfirmasi Password tidak sama")
+            return
+        }
+
+        if(password.length < 8){
+            onFailed("Password harus sama atau lebih dari 8 karakter")
+            return
+        }
+
+        if(noHp.isEmpty() || name.isEmpty()){
+            onFailed("Masukkan semua data dengan benar")
+            return
+        }
+
         auth.createUserWithEmailAndPassword(
             email, password
         ).addOnSuccessListener {
@@ -65,15 +90,15 @@ class Repository @Inject constructor(
                                     onSuccess()
                                 }
                                 .addOnFailureListener {
-                                    onFailed(Exception("Gagal dalam melakukan registrasi"))
+                                    onFailed("Gagal dalam melakukan registrasi")
                                 }
                         }
                 }
             } else {
-                onFailed(Exception("Gagal Melakukan Registrasi"))
+                onFailed("Gagal Melakukan Registrasi")
             }
         }.addOnFailureListener {
-            onFailed(it)
+            onFailed(it.message.toString())
         }
     }
 

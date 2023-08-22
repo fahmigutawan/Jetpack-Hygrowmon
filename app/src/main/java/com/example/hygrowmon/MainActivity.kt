@@ -21,6 +21,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.hygrowmon.component.Navbar
 import com.example.hygrowmon.component.layout.LoadingLayout
+import com.example.hygrowmon.helper.LoadingHandler
 import com.example.hygrowmon.routes.Routes
 import com.example.hygrowmon.viewmodel.MainViewModel
 import com.example.hygrowmon.viewmodel.RootViewModel
@@ -75,6 +76,7 @@ class MainActivity : ComponentActivity() {
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 destination.route?.let {
+                    LoadingHandler.dismiss()
                     mainViewModel.currentRoute.value = it
 
                     when (it) {

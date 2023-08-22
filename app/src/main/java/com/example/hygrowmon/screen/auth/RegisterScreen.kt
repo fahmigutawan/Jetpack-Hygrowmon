@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.hygrowmon.component.util.AppTextFieldColors
+import com.example.hygrowmon.helper.LoadingHandler
+import com.example.hygrowmon.helper.SnackbarHandler
 import com.example.hygrowmon.routes.Routes
 import com.example.hygrowmon.theming.AppColor
 import com.example.hygrowmon.viewmodel.auth.RegisterViewModel
@@ -136,7 +138,19 @@ fun RegisterScreen(navController: NavController) {
         Column {
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {/*TODO*/ },
+                onClick = {
+                    LoadingHandler.loading()
+                    viewModel.register(
+                        onSuccess = {
+                            LoadingHandler.dismiss()
+                            SnackbarHandler.showSnackbar("Sukses Registrasi")
+                        },
+                        onFailed = {
+                            LoadingHandler.dismiss()
+                            SnackbarHandler.showSnackbar(it)
+                        }
+                    )
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = AppColor.Orange,
                     contentColor = AppColor.White
